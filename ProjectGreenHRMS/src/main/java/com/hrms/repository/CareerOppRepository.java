@@ -8,5 +8,6 @@ import com.hrms.model.CareerOppEntity;
 
 @Repository
 public interface CareerOppRepository extends JpaRepository<CareerOppEntity, Integer>{
+	
 
 }

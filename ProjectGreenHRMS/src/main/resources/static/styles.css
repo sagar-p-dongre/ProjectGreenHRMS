@@ -23,17 +23,17 @@ body {
 }*/
 
 .title_small {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .form_container {
-  margin-top: 20px;
+  margin-top: 30px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
   gap: 20px;
 }
 .form_control {
-  display: flex;
+  display: grid;
   flex-direction: column;
 }
 
@@ -63,11 +63,11 @@ input:focus {
 }
 
 button {
-  background-color: rgb(255, 0, 128);
+  background-color: rgb(252, 18, 77);
   border: transparent solid 2px;
-  padding: 5px 5px;
+  padding: 4px 4px;
   color: white;
-  border-radius: 8px;
+  border-radius: 5px;
   transition: 0.3s ease-in;
 }
 

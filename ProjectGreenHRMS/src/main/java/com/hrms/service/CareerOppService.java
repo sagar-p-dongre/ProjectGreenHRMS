@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hrms.model.CareerOppEntity;
 import com.hrms.repository.CareerOppRepository;
@@ -41,5 +42,45 @@ public class CareerOppService {
 	}
 	
 	
+
+	public CareerOppEntity createOrUpdateJobDetail(CareerOppEntity entity) 
+	{
+		System.out.println("createOrUpdateJobDetail");
+		// Create new entry 
+		if(entity.getId()  == null) 
+		{    
+			/*
+			 * entity.setId(7); entity.setJobCode("C01027");
+			 * entity.setPosition("HeadOfficer"); entity.setLocation("Nagapur");
+			 * entity.setDescription("SaleDepartment"); entity.setExperience("1");
+			 */
+			entity = repository.save(entity);
+			
+			return entity;
+		} 
+		else 
+		{
+			// update existing entry 
+			Optional<CareerOppEntity> jobDetail = repository.findById(entity.getId());
+			
+			if(jobDetail.isPresent()) 
+			{
+				CareerOppEntity newEntity = jobDetail.get();
+				newEntity.setJobCode(entity.getJobCode());
+				newEntity.setPosition(entity.getPosition());
+				newEntity.setLocation(entity.getLocation());
+				newEntity.setDescription(entity.getDescription());
+				newEntity.setExperience(entity.getExperience());
+				
+				newEntity = repository.save(newEntity);
+				
+				return newEntity;
+			} else {
+				entity = repository.save(entity);
+				
+				return entity;
+			}
+		}
+	}
 
 }
